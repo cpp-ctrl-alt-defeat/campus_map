@@ -8,4 +8,4 @@
 7) Add names and colors to the javascript building objects
 8) Add buildings to an array
 9) iterate over array to find buildings, add mouseover and mouse click actions in js
-10) bring it together in html/css
+10) bring it together in html/css   ref https://parall.ax/blog/view/2985/tutorial-creating-an-interactive-svg-map
