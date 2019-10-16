@@ -271,6 +271,41 @@ body {
     transform-origin: 0 0; transform: scaleX(2) scaleY(2); margin: auto;
   }
   
+  /* search box css */
+  form.search-box input[type=text] {
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+   
+  }
+
+  form.search-box button {
+    float: left;
+    width: 10%;
+    padding: 8px;
+    background: #2196F3;
+    color: white;
+    font-size: 12px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+
+  form.search-box button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.search-box::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+   /* end of search box css */
+
   .navigation .navbar .navbar-nav {
     padding-top: 25px;
   }
@@ -316,7 +351,7 @@ body {
   .nav .open > a {
     background: transparent;
   }
-  
+
   .coverpic {
     background: url("../images/calpolypomonamapWIP.png") no-repeat;
     min-height: 100%;
