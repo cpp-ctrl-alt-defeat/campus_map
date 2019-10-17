@@ -46,10 +46,11 @@
                     <div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Search Box -->
-                            <form class="search-box" action="">
+                            <li><form class="search-box" name="searchForm">
                                 <input type="text" placeholder="Search" name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
+                                <button type="submit" onclick="searchFunction()"><i class="fa fa-search"></i></button>
                             </form>
+                            <!-- Search Box End -->
                             <li><a class="disabled" href="index.html">Home</a></li>
                             <li><a href="">About Us</a></li>
                             <li><button onclick="zoomIn();">Zoom In+</button></li>
@@ -100,6 +101,17 @@
         $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
             $(this).toggleClass('open');});
         });
+    </script>
+
+    <script type="text/javascript">
+        function searchFunction() 
+        {
+            var search = document.search-form.search.value;
+            if(search == "")
+                alert("empty");
+            else
+                alert(search)
+        }
     </script>
 
 </html>
