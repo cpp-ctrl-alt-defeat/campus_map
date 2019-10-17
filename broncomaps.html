@@ -23,7 +23,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-    <body>
+<body>
         <!-- Header Start -->
         <header class="navigation">
             <!-- Nav Start -->
@@ -45,16 +45,20 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
+						
                             <!-- Search Box -->
-                            <li><form class="search-box" name="searchForm">
-                                <input type="text" placeholder="Search" name="search">
-                                <button type="button" onclick="searchFunction()"><i class="fa fa-search"></i></button>
-                            </form>
+							<form class="search-box" name="searchForm">
+								<input class="search-txt" type="text" placeholder="Search..." name="search">
+								<button class="search-btn" type="button" onclick="searchFunction()">
+									<i class="fa fa-search" style="font-size: 1.2em; position: absolute; top: 28%; left:29%;"></i>
+								</button>
+							</form>
                             <!-- Search Box End -->
+							
                             <li><a class="disabled" href="index.html">Home</a></li>
                             <li><a href="">About Us</a></li>
-                            <li><button onclick="zoomIn();">Zoom In+</button></li>
-                            <li><button onclick="zoomOut();">Zoom Out-</button></li>
+                            <li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
+                            <li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -68,9 +72,7 @@
             <!-- Raphaël JS Map Here -->
         </div>
         <h3 id="region-name"></h3>
-
-        
-
+		
     </body>
 
     <!--========== Scripts ==========-->
