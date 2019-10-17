@@ -274,16 +274,8 @@ body {
   /* search box css */
 
   /* Clear floats */
-  form.search-box::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+
 	.search-box {
-		position: absolute;
-		top: 64%;
-		left: 56%;
-		transform: translate(-50%, -50%);
 		background: #2f3640;
 		height: 50px;
 		border-radius: 40px;
@@ -294,24 +286,16 @@ body {
 		padding: 6px;
 	}
 	.search-btn {
-		position: absolute;
 		color: #CEB00D;
-		float: left;
 		width: 40px;
 		height: 40px;
-		top: 10%;
-		left:83%;
 		border-radius: 50%;
 		background: #2f3640;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
 	}
 	.search-txt {
 		border: none;
 		background: none;
 		outline: none;
-		float: left;
 		padding: 0;
 		color: white;
 		font-size: 16px;
@@ -321,38 +305,22 @@ body {
    /* end of search box css */
 
 	.zoomIn {
-		position: absolute;
-		height: 30px;
-		width: 100px;
-		top: -5px;
-		left: 5px;
-		display: flex;
-		border: none;
-		background-color: #D8C03D;
-		color: #000;
-		padding: 0.75rem 0.75rem;
-		margin-top: 1rem;
-		text-decoration: none;
-		justify-content: center;
-		align-items: center;
-		transition: opacity .2s ease-in;
+    color: #CEB00D;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    background: transparent;
+    border: transparent;
 	}
 	.zoomOut {
-		position: absolute;
-		height: 30px;
-		width: 100px;
-		top: -5px;
-		left: 120px;
-		display: flex;
-		border: none;
-		background-color: #D8C03D;
-		color: #000;
-		padding: 0.75rem 0.75rem;
-		margin-top: 1rem;
-		text-decoration: none;
-		justify-content: center;
-		align-items: center;
-		transition: opacity .2s ease-in;
+    color: #CEB00D;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    background: transparent;
+    border: transparent;
 	}
 	.zoomIn:hover {
 		opacity: 0.7;
@@ -379,7 +347,6 @@ body {
   /* Home Styling */
   .navigation .navbar .navbar-nav > li > .disabled {
     color: #C0C0C0;
-    pointer-events: none;
     cursor: default;
   }
   
