@@ -195,7 +195,7 @@ body {
   }
   
   .navigation {
-    background: #fff;
+    background: #0E7654;
     padding: 0px 0;
     min-height: 90px;
   
@@ -204,11 +204,11 @@ body {
   .navigation .navbar {
     margin-bottom: 0px;
     border: 0px;
-    background: #fff;
+    background: #0E7654;
   }
 
   nav{
-    background: #fff;
+    background: #0E7654;
   }
 
   .navbar-inner .navbar {
