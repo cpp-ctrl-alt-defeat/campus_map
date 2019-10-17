@@ -48,7 +48,7 @@
                             <!-- Search Box -->
                             <li><form class="search-box" name="searchForm">
                                 <input type="text" placeholder="Search" name="search">
-                                <button type="submit" onclick="searchFunction()"><i class="fa fa-search"></i></button>
+                                <button type="button" onclick="searchFunction()"><i class="fa fa-search"></i></button>
                             </form>
                             <!-- Search Box End -->
                             <li><a class="disabled" href="index.html">Home</a></li>
@@ -103,14 +103,22 @@
         });
     </script>
 
+    <!-- Script for search box. -->
     <script type="text/javascript">
+        // Highlights a building green when searched.
         function searchFunction() 
         {
             var search = document.searchForm.search.value;
             if(search == "")
-                alert("empty");
+                alert("empty search");
             else
-                alert(search)
+            {
+                for(var i = 0; i < buildings.length; i++)
+                {
+                    if(buildings[i].data('id') == search)
+                        buildings[i].attr({fill:"green"});
+                }
+            }
         }
     </script>
 
