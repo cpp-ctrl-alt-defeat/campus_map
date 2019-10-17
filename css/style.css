@@ -367,20 +367,23 @@ body {
     padding-top: 25px;
   }
   
+  /* About Us Styling */
   .navigation .navbar .navbar-nav > li > a {
-    color: #5C5C5C;
+    color: #CEB00D;
     padding: 10px 15px;
     font-weight: 500;
     font-size: 14px;
     text-transform: uppercase;
   }
-  
+
+  /* Home Styling */
   .navigation .navbar .navbar-nav > li > .disabled {
     color: #C0C0C0;
     pointer-events: none;
     cursor: default;
   }
   
+  /* Button Hover Styling */
   .navigation .navbar .navbar-nav > li > a:hover, .navigation .navbar .navbar-nav > li > a:focus {
     color: #000;
     background: transparent;
