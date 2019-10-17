@@ -3157,7 +3157,3 @@ i++) {
     }
 
 }
-
-function searchFunction(){
-
-}
