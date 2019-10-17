@@ -272,16 +272,6 @@ body {
   }
   
   /* search box css */
-  form.search-box input[type=text] {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid grey;
-    float: left;
-    width: 150px;
-    height: 27px;
-    background: #f1f1f1;
-   
-  }
 
   /* Clear floats */
   form.search-box::after {
@@ -289,23 +279,87 @@ body {
     clear: both;
     display: table;
   }
+	.search-box {
+		position: absolute;
+		top: 64%;
+		left: 56%;
+		transform: translate(-50%, -50%);
+		background: #2f3640;
+		height: 50px;
+		border-radius: 40px;
+		padding: 1px;
+	}
+	.search-box > .search-txt {
+		width: 240px;
+		padding: 6px;
+	}
+	.search-btn {
+		position: absolute;
+		color: #CEB00D;
+		float: left;
+		width: 40px;
+		height: 40px;
+		top: 10%;
+		left:83%;
+		border-radius: 50%;
+		background: #2f3640;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.search-txt {
+		border: none;
+		background: none;
+		outline: none;
+		float: left;
+		padding: 0;
+		color: white;
+		font-size: 16px;
+		line-height: 40px;
+	}
 
-  form.search-box button {
-    float: left;
-    width: 27px;
-    height: 27px;
-    padding: 6px;
-    background: #2196F3;
-    color: white;
-    font-size: 10px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-  }
+   /* end of search box css */
 
-  form.search-box button:hover {
-    background: #0b7dda;
-  }
+	.zoomIn {
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		top: -5px;
+		left: 5px;
+		display: flex;
+		border: none;
+		background-color: #D8C03D;
+		color: #000;
+		padding: 0.75rem 0.75rem;
+		margin-top: 1rem;
+		text-decoration: none;
+		justify-content: center;
+		align-items: center;
+		transition: opacity .2s ease-in;
+	}
+	.zoomOut {
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		top: -5px;
+		left: 120px;
+		display: flex;
+		border: none;
+		background-color: #D8C03D;
+		color: #000;
+		padding: 0.75rem 0.75rem;
+		margin-top: 1rem;
+		text-decoration: none;
+		justify-content: center;
+		align-items: center;
+		transition: opacity .2s ease-in;
+	}
+	.zoomIn:hover {
+		opacity: 0.7;
+	}
+	.zoomOut:hover {
+		opacity: 0.7;
+	}
 
    /* end of search box css */
 
