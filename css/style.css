@@ -281,17 +281,32 @@ body {
 		border-radius: 40px;
 		padding: 1px;
 	}
+
+@media (max-width: 855px) {
+    .search-box {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        width: 80%;
+    }
+}
+
 	.search-box > .search-txt {
-		width: 240px;
-		padding: 6px;
+		width: calc(100% - 46px);
+        padding: 6px;
 	}
+
 	.search-btn {
 		color: #CEB00D;
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
 		background: #2f3640;
+        position: absolute;
+        margin-top: 4px;
+        margin-left: 1px;
+
 	}
+
 	.search-txt {
 		border: none;
 		background: none;
