@@ -46,8 +46,8 @@
 						
                             <!-- Search Box -->
                             <li>
-                                <form class="search-box" name="searchForm">
-                                    <input class="search-txt" type="text" placeholder="Search..." name="search">
+                                <form class="search-box" name="searchForm" onsubmit="return false">
+                                    <input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
                                     <button class="search-btn" type="button" onclick="searchFunction()">
                                         <i class="fa fa-search"></i>
                                     </button>
@@ -66,7 +66,7 @@
         </header><!-- header close -->
 
 
-        <div id="rsr" class="cpp">
+        <div id="rsr" class="cpp" onclick="resetBldgAttr()">
             <!-- Raphaël JS Map Here -->
         </div>
         <h3 id="region-name"></h3>
@@ -105,21 +105,63 @@
 
     <!-- Script for search box. -->
     <script type="text/javascript">
+
+        // Resets building attributes.
+        function resetBldgAttr()
+        {
+            for (var i = 0; i < buildings.length; i++)
+            {
+                buildings[i].attr({fill:"gold"});
+                buildings[i].mouseover(function(e){
+                    this.node.style.opacity = 0.7;
+                    this.node.setAttribute('fill', 'green');
+                    document.getElementById('region-name').innerHTML = this.data('id');
+                });
+
+                buildings[i].mouseout(function(e){
+                    this.node.style.opacity = 1;
+                    this.node.setAttribute('fill', 'gold');
+                });
+            }
+        }
+    
         // Highlights a building green when searched.
         function searchFunction() 
-        {
+        {   
+            resetBldgAttr();
+        
             var search = document.searchForm.search.value;
-            if(search == "")
-                alert("empty search");
-            else
+            var b = 'B';
+            search = s.concat(search)
+            if(search != "")
             {
                 for(var i = 0; i < buildings.length; i++)
                 {
                     if(buildings[i].data('id') == search)
+                    {
                         buildings[i].attr({fill:"green"});
+                        buildings[i].mouseover(function(e){ 
+                            this.node.setAttribute('fill', 'green');
+                            document.getElementById('region-name').innerHTML = this.data('id');
+                        });
+                        buildings[i].mouseout(function(e){
+                            this.node.setAttribute('fill', 'green');
+                            document.getElementById('region-name').innerHTML = this.data('id');
+                        });
+                    }
                 }
             }
         }
+
+        // Fired when enter is pressed in search box.
+        function whenEnter() 
+        {
+            if(event.keyCode == 13)
+            {
+                searchFunction();
+            }
+        }
+
     </script>
 
 </html>
