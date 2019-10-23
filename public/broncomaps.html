@@ -24,45 +24,43 @@
 <body>
         <!-- Header Start -->
         <header class="navigation">
-            <!-- Nav Start -->
-            <nav class="navbar navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header"><!-- Logo and hamburger button -->
-                        <a class="navbar-brand">
-                            <div class="logo" alt="Logo">
-                            </div><!-- logo  -->
-                        </a>
-                        <!-- Hamburger btn, id links shapes, class links placement -->
-                        <div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
-                            <span></span><!-- Hamburger Line -->
-                            <span></span><!-- Hamburger Line -->
-                            <span></span><!-- Hamburger Line -->
-                            <span></span><!-- Hamburger Line 2nd middle for X -->
-                        </div>
-                    </div><!-- navbar-header -->
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-						
-                            <!-- Search Box -->
-                            <li>
-                                <form class="search-box" name="searchForm" onsubmit="return false">
-                                    <input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
-                                    <button class="search-btn" type="button" onclick="searchFunction()">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </form>
-                            </li>
-                            <!-- Search Box End -->
-							
-                            <li><a class="disabled" href="index.html">Home</a></li>
-                            <li><a href="">About Us</a></li>
-                            <li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
-                            <li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-              </nav>
+			<!-- Nav Start -->
+			<nav class="navbar navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header"><!-- Logo and hamburger button -->
+						<a class="navbar-brand">
+							<div class="logo" alt="Logo">
+							</div><!-- logo  -->
+						</a>
+						<!-- Hamburger btn, id links shapes, class links placement -->
+						<div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line 2nd middle for X -->
+						</div>
+					</div><!-- navbar-header -->
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Search Box -->
+							<li>
+								<form class="search-box" name="searchForm" onsubmit="return false">
+									<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
+									<button class="search-btn" type="button" onclick="searchFunction()">
+										<i class="fa fa-search"></i>
+									</button>
+								</form>
+							</li>
+							<!-- Search Box End -->
+							<li><a class="disabled" href="index.html">Home</a></li>
+							<li><a href="">About Us</a></li>
+							<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
+							<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			  </nav>
         </header><!-- header close -->
 
 
@@ -70,7 +68,7 @@
             <!-- Raphaël JS Map Here -->
         </div>
         <h3 id="region-name"></h3>
-		
+
     </body>
 
     <!--========== Scripts ==========-->
@@ -124,12 +122,12 @@
                 });
             }
         }
-    
+
         // Highlights a building green when searched.
-        function searchFunction() 
-        {   
+        function searchFunction()
+        {
             resetBldgAttr();
-        
+
             var search = document.searchForm.search.value;
             var B = 'B';
             search = B.concat(search);
@@ -140,7 +138,7 @@
                     if(buildings[i].data('id') == search)
                     {
                         buildings[i].attr({fill:"green"});
-                        buildings[i].mouseover(function(e){ 
+                        buildings[i].mouseover(function(e){
                             this.node.setAttribute('fill', 'green');
                             document.getElementById('region-name').innerHTML = this.data('id');
                         });
@@ -154,7 +152,7 @@
         }
 
         // Fired when enter is pressed in search box.
-        function whenEnter() 
+        function whenEnter()
         {
             if(event.keyCode == 13)
             {
@@ -163,5 +161,22 @@
         }
 
     </script>
+	
+	<!-- Zoom with Scroll -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel"
+		$(document).bind(mousewheelevt, function(e){
+			var evt = window.event || e;
+			evt = evt.originalEvent ? evt.originalEvent : evt;            
+			var delta = evt.detail ? evt.detail*(-40) : evt.wheelDelta;
 
+			if(delta > 0) {
+				zoomIn();
+			}
+			else{
+				zoomOut();
+			}   
+		});
+	</script>
 </html>
