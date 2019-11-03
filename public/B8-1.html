@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		
+		<meta charset="utf-8"><!-- Must be up here-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Must be up here-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Must be up here--><!-- Mobile Specific Meta-->
+        <meta name="description" content="cpp-ctrl-alt-defeat Website">
+        <meta name="author" content="cpp-ctrl-alt-defeat">
+        <meta name="theme-color" content="#ED1C24"/>
 		<title>Building 9 Floor 1</title>
-		<link rel="stylesheet" href="css/9-1-style.css">
+            <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" /><!-- Favicon -->
+            <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"><!-- Bootstrap 3.3.7 css being used --><!-- Bootstrap 4 not compatible with IE 9 -->
+            <link rel="stylesheet" href="plugins/animate-css/animate.css"><!-- animate.css -->
+            <!-- <link rel="manifest" href="js/manifest.json" /> -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Volkhov:400italic">
+            <!-- ===========Main Stylesheet=========== -->
+			<link rel="stylesheet" href="css/9-1-style.css">
+			<link rel="stylesheet" href="css/style.css">
+            <!-- Icon library -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 
 	<body>
+
+		<!-- Header Start -->
+        <header class="navigation">
+				<!-- Nav Start -->
+				<nav class="navbar navbar-fixed-top">
+					<div class="container">
+						<div class="navbar-header"><!-- Logo and hamburger button -->
+							<a class="navbar-brand">
+								<div class="logo" alt="Logo">
+								</div><!-- logo  -->
+							</a>
+							<!-- Hamburger btn, id links shapes, class links placement -->
+							<div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
+								<span></span><!-- Hamburger Line -->
+								<span></span><!-- Hamburger Line -->
+								<span></span><!-- Hamburger Line -->
+								<span></span><!-- Hamburger Line 2nd middle for X -->
+							</div>
+						</div><!-- navbar-header -->
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<!-- Search Box -->
+								<li>
+									<form class="search-box" name="searchForm" action="broncomaps.html">
+										<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
+										<button class="search-btn" type="button" onclick="searchFunction()">
+											<i class="fa fa-search"></i>
+										</button>
+									</form>
+								</li>
+								<!-- Search Box End -->
+								<li><a class="disabled" href="index.html">Home</a></li>
+								<li><a href="">About Us</a></li>
+								<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
+								<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				  </nav>
+			</header><!-- header close -->
+
 		<?xml version="1.0" encoding="utf-8"?>
 		<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 		<svg onload="fillRoomsGold()" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -1440,6 +1499,33 @@
 		</svg>
 	</body>
 
+	 <!--========== Scripts ==========-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>    <!-- Bootstrap 3.3.7 -->
+	
+	<script>
+			var zoomLevel = 2.0;
+			function zoomIn()
+			{
+				var x = document.getElementsByTagName('svg')[0];
+				zoomLevel += 0.5;
+				x.style.transform = "scaleX(" + zoomLevel + ") scaleY(" + zoomLevel + ")";
+			}
+			function zoomOut()
+			{
+				var x = document.getElementsByTagName('svg')[0];
+				zoomLevel -= 0.5;
+				if(zoomLevel == 0.0){zoomLevel = 0.5;}
+				x.style.transform = "scaleX(" + zoomLevel + ") scaleY(" + zoomLevel + ")";
+			}
+	
+			$(document).ready(function(){
+			//Hamburger menu icon
+			$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+				$(this).toggleClass('open');});
+			});
+		</script>
+
 	<script type="text/javascript">
 		function highlightRoom(room)
 		{
@@ -1465,5 +1551,23 @@
 				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();
 			highlightRoom(room);
 		}
+	</script>
+
+	<!-- Zoom with Scroll -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel"
+		$(document).bind(mousewheelevt, function(e){
+			var evt = window.event || e;
+			evt = evt.originalEvent ? evt.originalEvent : evt;            
+			var delta = evt.detail ? evt.detail*(-40) : evt.wheelDelta;
+
+			if(delta > 0) {
+				zoomIn();
+			}
+			else{
+				zoomOut();
+			}   
+		});
 	</script>
 </html>
