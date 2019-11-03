@@ -1441,6 +1441,12 @@
 	</body>
 
 	<script type="text/javascript">
+		function highlightRoom(room)
+		{
+			var x = document.getElementById(room);
+			x.style.fill = "green";
+		}
+
 		// Function to fill all rooms gold.
 		function fillRoomsGold() 
 		{
@@ -1454,9 +1460,10 @@
 			{
 				 rectObjs[i].style.fill = "gold";
 			}
-	
-			 var x = document.getElementById('R103');
-			 x.style.fill = "green";
+			var room = window.location.search.substring(1);
+			if(/[a-z]/.test(room))
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();
+			highlightRoom(room);
 		}
 	</script>
 </html>

@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class BuildingScraper {
 
     public static void main(String args[])throws Exception{
-        File file = new File("C:\\Users\\Carmelo\\Downloads\\campus_map-master\\campus_map-master\\svg.js");
+        File file = new File("C:\Users\12138\Desktop\campus_maps\campus_map\public\svg.js");
         ArrayList<String> buildings = new ArrayList<>();
         String output = "var buildings = [";
 

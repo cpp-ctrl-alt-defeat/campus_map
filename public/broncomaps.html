@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-<body>
+<body onload="resetBldgAttr()">
         <!-- Header Start -->
         <header class="navigation">
 			<!-- Nav Start -->
@@ -63,7 +63,7 @@
 			  </nav>
         </header><!-- header close -->
 
-
+        <!-- onclick="resetBldgAttr()" -->
         <div id="rsr" class="cpp" onclick="resetBldgAttr()">
             <!-- Raphaël JS Map Here -->
         </div>
@@ -77,6 +77,7 @@
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>    <!-- Bootstrap 3.3.7 -->
     <script src="raphael-min.js"></script>  <!-- Raphael script -->
     <script src="svg.js"></script>  <!-- MAP DATA -->
+    <script src="B8-1.html"></script>
 
     <script>
         var zoomLevel = 2.0;
@@ -120,35 +121,84 @@
                     this.node.style.opacity = 1;
                     this.node.setAttribute('fill', 'gold');
                 });
+                
+                buildings[i].mousedown(function(e){
+                    window.location = 'broncomaps.html';
+                });
             }
         }
 
-        // Highlights a building green when searched.
+        // Function to validate search string.
+        // Regex: at least one digit (optionally 
+        // followed by a dash, followed by
+        // at least one digit (and optionally 
+        // followed by a letter)).
+        function validSearch(search)
+        {
+            var regex = /^[0-9]+([a-zA-Z])?(\-[0-9]+([a-zA-Z])?)?$/;
+            return regex.test(search);
+        }
+
+        // Highlights a building green.
+        function highlightBuilding(building)
+        {
+            for(var i = 0; i < buildings.length; i++)
+            {
+                if(buildings[i].data('id') == building)
+                {
+                    buildings[i].attr({fill:"green"});
+                    buildings[i].mouseover(function(e){
+                        this.node.setAttribute('fill', 'green');
+                        document.getElementById('region-name').innerHTML = this.data('id');
+                    });
+                    buildings[i].mouseout(function(e){
+                        this.node.setAttribute('fill', 'green');
+                        document.getElementById('region-name').innerHTML = this.data('id');
+                    });
+                    return i;
+                }
+            }
+            alert(building+" does not exist.")
+            return -1;
+        }
+
+        // Highlights a valid building and sets
+        // its mousedown event to open to the 
+        // according floor if room is seached.
         function searchFunction()
         {
             resetBldgAttr();
 
             var search = document.searchForm.search.value;
-            var B = 'B';
-            search = B.concat(search);
-            if(search != "")
-            {
-                for(var i = 0; i < buildings.length; i++)
+            search = search.replace(/ /g, "");
+            var building;
+            var room;
+            var floor;
+
+            if(validSearch(search)) 
+            { 
+                if(search.includes('-'))
                 {
-                    if(buildings[i].data('id') == search)
-                    {
-                        buildings[i].attr({fill:"green"});
-                        buildings[i].mouseover(function(e){
-                            this.node.setAttribute('fill', 'green');
-                            document.getElementById('region-name').innerHTML = this.data('id');
-                        });
-                        buildings[i].mouseout(function(e){
-                            this.node.setAttribute('fill', 'green');
-                            document.getElementById('region-name').innerHTML = this.data('id');
-                        });
-                    }
+                    var parameters = search.split('-');
+                    building = 'B'+parameters[0];
+                    room = 'R'+parameters[1];
+                    floor = parameters[1].charAt(0);
+                    var i = highlightBuilding(building);
+                    buildings[i].mousedown(function(e){
+                        window.location = this.data('id')+'-'+floor+'.html?'+room;
+                    });
+                    return;
                 }
+                else
+                {
+                    building = 'B'+search;
+                    highlightBuilding(building);
+                    return;
+                }
+                
             }
+            else
+                alert("Oops, invalid search.");
         }
 
         // Fired when enter is pressed in search box.
