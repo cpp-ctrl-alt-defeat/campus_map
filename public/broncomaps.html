@@ -63,8 +63,10 @@
 			  </nav>
         </header><!-- header close -->
 
+		<!-- SVG Zoom and Pan Library -->
+		<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.2.6"></script>
         <!-- onclick="resetBldgAttr()" -->
-        <div id="rsr" class="cpp" onclick="resetBldgAttr()">
+        <div data-zoom-on-wheel data-pan-on-drag id="rsr" class="cpp" onclick="resetBldgAttr()">
             <!-- Raphaël JS Map Here -->
         </div>
         <h3 id="region-name"></h3>
