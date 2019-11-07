@@ -193,7 +193,7 @@
                 else
                 {
                     building = 'B'+search;
-                    highlightBuilding(building);
+                    var i = highlightBuilding(building);
                     buildings[i].mousedown(function(e){
                         window.location = this.data('id')+'.html';
                     });
