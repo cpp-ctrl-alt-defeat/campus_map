@@ -3122,8 +3122,14 @@ group_gb.push( path_bih );
 L79a.push( C79a );
 T79a.push( F79a07 , F79a09 , F79aoa );
 
+var B9 = rsr.path("M 453.2,209.2L453.1,182.4L477,182.3L477.3,254.7L469.9,254.8L469.9,255.4L460.2,255.4L460.2,254.8L453.5,254.9L453.3,218L457.4,218L457.3,209.2 z");
+B9.attr({id: 'B9',class: 'st25','stroke-width': '0.5','stroke-opacity': '1','fill': '#FFFFFF'}).data('id', 'B9');
 
-var buildings = [B141 ,B76 ,B5 ,B8 ,B4a ,B77 ,B78 ,B2 ,B92 ,B3 ,B46 ,B7 ,B79 ,B32 ,B79a ,B79b ,B1 ,B111 ,B70 ,B20 ,B21 ,B22 ,B23 ,B71 ,B59 ,B41 ,B191 ,B43 ,B86c ,B116 ,B37 ,B39 ,B38 ,B29 ,B89 ,B67 ,B45 ,B66 ,B158 ,B50 ,B55 ,B13a ,B13c ,B17 ,B15 ,B27 ,B95 ,B6 ,B94 ,B97 ,B24a ,B24b ,B24c ,B24d ,B24bath ,B24e ,B24 ,B35 ,B121 ,B42 ,B44 ,B86b ,B86a ,B86,B4 ,B4b ,B4ba ,B60 ,B60b ,B60a ,B61 ,B61a ,B61b ,B98 ,B98c ,B98b ,B98a ,B91 ,B91a ,B19];
+
+var buildings = [B9,B141 ,B76 ,B5 ,B8 ,B4a ,B77 ,B78 ,B2 ,B92 ,B3 ,B46 ,B7 ,B79 ,B32 ,B79a ,B79b ,B1 ,B111 ,B70 ,B20 ,B21 ,B22 ,B23 ,B71 ,B59 ,B41 ,B191 ,B43 ,B86c ,B116 ,B37 ,B39 ,B38 ,B29 ,B89 ,B67 ,B45 ,B66 ,B158 ,B50 ,B55 ,B13a ,B13c ,B17 ,B15 ,B27 ,B95 ,B6 ,B94 ,B97 ,B24a ,B24b ,B24c ,B24d ,B24bath ,B24e ,B24 ,B35 ,B121 ,B42 ,B44 ,B86b ,B86a ,B86,B4 ,B4b ,B4ba ,B60 ,B60b ,B60a ,B61 ,B61a ,B61b ,B98 ,B98c ,B98b ,B98a ,B91 ,B91a ,B19];
+
+
+
 
 // for (var i = 0;
 // i < buildings.length;
