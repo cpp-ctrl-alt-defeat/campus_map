@@ -186,7 +186,7 @@
                     floor = parameters[1].charAt(0);
                     var i = highlightBuilding(building);
                     buildings[i].mousedown(function(e){
-                        window.location = this.data('id')+'-'+floor+'.html?'+room;
+                        window.location = this.data('id')+'.html?'+room;
                     });
                     return;
                 }
@@ -194,6 +194,9 @@
                 {
                     building = 'B'+search;
                     highlightBuilding(building);
+                    buildings[i].mousedown(function(e){
+                        window.location = this.data('id')+'.html';
+                    });
                     return;
                 }
                 
