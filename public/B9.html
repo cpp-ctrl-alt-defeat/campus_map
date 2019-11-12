@@ -46,7 +46,7 @@
 							<ul class="nav navbar-nav navbar-right">
 								<!-- Search Box -->
 								<li>
-									<form class="search-box" name="searchForm" action="broncomaps.html">
+									<form class="search-box" name="searchForm" onsubmit="return false">
 										<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
 										<button class="search-btn" type="button" onclick="searchFunction()">
 											<i class="fa fa-search"></i>
@@ -54,8 +54,8 @@
 									</form>
 								</li>
 								<!-- Search Box End -->
-								<li><a class="disabled" href="index.html">Home</a></li>
-								<li><a href="">About Us</a></li>
+								<li><a href="broncomaps.html">Home</a></li>
+								<li><a href="https://github.com/cpp-ctrl-alt-defeat/campus_map">Github</a></li>
 								<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
 								<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
 							</ul>
@@ -69,7 +69,7 @@
 				<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.2.6"></script>
 				<div data-zoom-on-wheel data-pan-on-drag style="height: 100vh;">
 				<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-				<svg version="1.1" onload="fillRoomsGold()" preserveAspectRatio="xMidYMid meet" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				<svg version="1.1" onload="highlightRoom()" preserveAspectRatio="xMidYMid meet" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 1224 792" style="enable-background:new 0 0 1224 792;" xml:space="preserve">
 				<rect id="R103" x="442.5" y="165.9" transform="matrix(2.755540e-03 -1 1 2.755540e-03 254.3024 712.9608)" class="st0" width="84.2" height="126.2"/>
 				<rect id="R104" x="422" y="187" class="st1" width="41.2" height="14.8"/>
@@ -5369,8 +5369,21 @@
 		</script>
 
 	<script type="text/javascript">
-		function highlightRoom(room)
+		function highlightRoom()
 		{
+			fillRoomsGold();
+			var room = window.location.search.substring(1);
+			if(/[a-z]/.test(room))
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();	
+			var x = document.getElementById(room);
+			x.style.fill = "green";
+		}
+
+		function highlightChosenRoom(room)
+		{
+			fillRoomsGold();
+			if(/[a-z]/.test(room))
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();	
 			var x = document.getElementById(room);
 			x.style.fill = "green";
 		}
@@ -5388,10 +5401,42 @@
 			{
 				 rectObjs[i].style.fill = "gold";
 			}
-			var room = window.location.search.substring(1);
-			if(/[a-z]/.test(room))
-				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();
-			highlightRoom(room);
+
 		}
+
+		// Function to validate search string.
+        // Regex: at least one digit (optionally 
+        // followed by a dash, followed by
+        // at least one digit (and optionally 
+        // followed by a letter)).
+        function validSearch(search)
+        {
+            var regex = /^[0-9]+([a-zA-Z])?(\-[0-9]+([a-zA-Z])?)?$/;
+            return regex.test(search);
+        }
+
+		// Highlights a valid building and sets
+        // its mousedown event to open to the 
+        // according floor if room is seached.
+        function searchFunction()
+        {
+            fillRoomsGold();
+
+            var search = document.searchForm.search.value;
+            search = search.replace(/ /g, "");
+            var room = 'R'+search;
+			
+			highlightChosenRoom(room);
+            
+        }
+
+        // Fired when enter is pressed in search box.
+        function whenEnter()
+        {
+            if(event.keyCode == 13)
+            {
+                searchFunction();
+            }
+        }
 	</script>
 </html>

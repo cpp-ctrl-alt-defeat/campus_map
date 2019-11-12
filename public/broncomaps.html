@@ -53,8 +53,8 @@
 								</form>
 							</li>
 							<!-- Search Box End -->
-							<li><a class="disabled" href="index.html">Home</a></li>
-							<li><a href="">About Us</a></li>
+							<li><a href="broncomaps.html">Home</a></li>
+							<li><a href="https://github.com/cpp-ctrl-alt-defeat/campus_map">Github</a></li>
 							<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
 							<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
 						</ul>
@@ -65,7 +65,6 @@
 
 		<!-- SVG Zoom and Pan Library -->
 		<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.2.6"></script>
-        <!-- onclick="resetBldgAttr()" -->
         <div data-zoom-on-wheel data-pan-on-drag id="rsr" class="cpp" onclick="resetBldgAttr()">
             <!-- Raphaël JS Map Here -->
         </div>
@@ -174,7 +173,6 @@
             search = search.replace(/ /g, "");
             var building;
             var room;
-            var floor;
 
             if(validSearch(search)) 
             { 
@@ -183,7 +181,6 @@
                     var parameters = search.split('-');
                     building = 'B'+parameters[0];
                     room = 'R'+parameters[1];
-                    floor = parameters[1].charAt(0);
                     var i = highlightBuilding(building);
                     buildings[i].mousedown(function(e){
                         window.location = this.data('id')+'.html?'+room;
