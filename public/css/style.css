@@ -244,7 +244,7 @@ body {
       background: url("../images/logo.png") no-repeat;
       width: 73px; /* Width of new image */
       height: 73px; /* Height of new image */
-      padding-left: 180px; /* Equal to width of new image */
+      padding-left: 160px; /* Equal to width of new image */
       min-height: 100%;
       min-width: 100%;
       background-size: contain
