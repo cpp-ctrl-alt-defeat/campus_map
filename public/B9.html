@@ -66,11 +66,11 @@
 
 			<!-- SVG Zoom and Pan Library   -->
 				<?xml version="1.0" encoding="utf-8"?>
-				<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.2.6"></script>
-				<div data-zoom-on-wheel data-pan-on-drag style="height: 100vh;">
+				<script src="http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
+				<div style="height: 100vh;">
 				<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-				<svg version="1.1" onload="highlightRoom()" preserveAspectRatio="xMidYMid meet" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					 viewBox="0 0 1224 792" style="enable-background:new 0 0 1224 792;" xml:space="preserve">
+				<svg version="1.1" onload="highlightRoom()" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+					 width="1224" height="792" xml:space="preserve">
 				<rect id="R103" x="442.5" y="165.9" transform="matrix(2.755540e-03 -1 1 2.755540e-03 254.3024 712.9608)" class="st0" width="84.2" height="126.2"/>
 				<rect id="R104" x="422" y="187" class="st1" width="41.2" height="14.8"/>
 				<rect id="R105" x="421.6" y="101" class="st2" width="126.2" height="86.1"/>
@@ -5346,6 +5346,7 @@
 	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>    <!-- Bootstrap 3.3.7 -->
 	
 	<script>
+			var panZoomTiger = svgPanZoom('div>svg');
 			var zoomLevel = 2.0;
 			function zoomIn()
 			{
@@ -5374,9 +5375,11 @@
 			fillRoomsGold();
 			var room = window.location.search.substring(1);
 			if(/[a-z]/.test(room))
-				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();	
-			var x = document.getElementById(room);
-			x.style.fill = "green";
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();
+			if(room.length > 0){	
+				var x = document.getElementById(room);
+				x.style.fill = "green";
+			}
 		}
 
 		function highlightChosenRoom(room)
