@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8"><!-- Must be up here-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Must be up here-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Must be up here--><!-- Mobile Specific Meta-->
+        <meta name="description" content="cpp-ctrl-alt-defeat Website">
+        <meta name="author" content="cpp-ctrl-alt-defeat">
+        <meta name="theme-color" content="#ED1C24"/>
+		<title>CPP Building 3</title>
+            <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" /><!-- Favicon -->
+            <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"><!-- Bootstrap 3.3.7 css being used --><!-- Bootstrap 4 not compatible with IE 9 -->
+            <link rel="stylesheet" href="plugins/animate-css/animate.css"><!-- animate.css -->
+            <!-- <link rel="manifest" href="js/manifest.json" /> -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Volkhov:400italic">
+            <!-- ===========Main Stylesheet=========== -->
+			<link rel="stylesheet" href="css/style.css">
+            <!-- Icon library -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body>
+        <!-- Header Start -->
+        <header class="navigation">
+			<!-- Nav Start -->
+			<nav class="navbar navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header"><!-- Logo and hamburger button -->
+						<a class="navbar-brand">
+							<div class="logo" alt="Logo">
+							</div><!-- logo  -->
+						</a>
+						<!-- Hamburger btn, id links shapes, class links placement -->
+						<div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line 2nd middle for X -->
+						</div>
+					</div><!-- navbar-header -->
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Search Box -->
+							<li>
+								<form class="search-box" name="searchForm" onsubmit="return false">
+									<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
+									<button class="search-btn" type="button" onclick="searchFunction()">
+										<i class="fa fa-search"></i>
+									</button>
+								</form>
+							</li>
+							<!-- Search Box End -->
+							<li><a class="homeButton" href="http://www.broncomaps.com">Home</a></li>
+							<li><a class="githubButton" href="https://github.com/cpp-ctrl-alt-defeat/campus_map">Github</a></li>
+							<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
+							<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			  </nav>
+        </header><!-- header close -->
+
+			<!-- SVG Zoom and Pan Library   -->
+				<?xml version="1.0" encoding="utf-8"?>
+				<script src="http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
+				<div style="height: 100vh;">
+				<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+				<svg id="Layer_1" onload="highlightRoom()" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="50vw" height="50vh">
+					<defs>
+					  <style>
+						.cls-1 {
+						  fill: #fff;
+						}
+				  
+						.cls-1, .cls-15, .cls-16, .cls-17, .cls-2, .cls-3, .cls-4, .cls-5 {
+						  stroke: #000;
+						  stroke-miterlimit: 10;
+						}
+				  
+						.cls-2 {
+						  fill: #ff0;
+						}
+				  
+						.cls-3 {
+						  fill: #008cff;
+						}
+				  
+						.cls-4 {
+						  fill: #ff00c3;
+						}
+				  
+						.cls-5 {
+						  fill: #7c7c7c;
+						}
+				  
+						.cls-6 {
+						  font-size: 36px;
+						}
+				  
+						.cls-18, .cls-19, .cls-20, .cls-6 {
+						  font-family: MyriadPro-Regular, Myriad Pro;
+						}
+				  
+						.cls-7 {
+						  letter-spacing: -0.03em;
+						}
+				  
+						.cls-8 {
+						  letter-spacing: 0em;
+						}
+				  
+						.cls-9 {
+						  letter-spacing: -0.02em;
+						}
+				  
+						.cls-10 {
+						  letter-spacing: 0.01em;
+						}
+				  
+						.cls-11 {
+						  letter-spacing: 0em;
+						}
+				  
+						.cls-12 {
+						  letter-spacing: -0.01em;
+						}
+				  
+						.cls-13 {
+						  letter-spacing: 0em;
+						}
+				  
+						.cls-14 {
+						  letter-spacing: -0.02em;
+						}
+				  
+						.cls-15 {
+						  fill: #bcbcbc;
+						}
+				  
+						.cls-16 {
+						  fill: none;
+						}
+				  
+						.cls-17 {
+						  fill: #a5a5a5;
+						}
+				  
+						.cls-18 {
+						  font-size: 16px;
+						}
+				  
+						.cls-19 {
+						  font-size: 9px;
+						}
+				  
+						.cls-20 {
+						  font-size: 6px;
+						}
+					  </style>
+					</defs>
+					<title>B3</title>
+					<polygon class="cls-1" points="421.63 144.15 421.63 489.75 373 489.75 373 548.73 0.5 548.73 0.5 47.92 137.08 47.92 137.08 436.98 287.12 436.98 287.12 144.15 421.63 144.15"/>
+					<polygon class="cls-1" points="1117.5 110.01 1117.5 455.6 1065.76 455.6 1065.76 683.24 985.06 683.24 985.06 700.83 936.42 700.83 936.42 567.35 985.06 567.35 985.06 515.62 829.85 515.62 829.85 548.73 700.51 548.73 700.51 12.74 829.85 12.74 829.85 404.9 992.3 404.9 992.3 110.01 1117.5 110.01"/>
+					<rect id="R1006" class="cls-2" x="0.5" y="47.92" width="54.84" height="52.77"/>
+					<rect id="R1005" class="cls-2" x="79.14" y="74.83" width="27.94" height="25.87"/>
+					<rect id="R1406" class="cls-2" x="107.08" y="74.83" width="30.01" height="25.87"/>
+					<rect id="R1402" class="cls-2" x="107.08" y="47.92" width="30.01" height="26.9"/>
+					<rect id="R1008" class="cls-2" x="0.5" y="100.69" width="54.84" height="110.72"/>
+					<rect id="R1009" class="cls-2" x="79.14" y="100.69" width="57.94" height="110.72"/>
+					<rect id="R1020" class="cls-2" x="0.5" y="211.41" width="54.84" height="119.82"/>
+					<rect id="R1019" class="cls-2" x="79.14" y="211.41" width="57.94" height="119.82"/>
+					<rect id="R1042" class="cls-2" x="0.5" y="439.05" width="54.84" height="35.18"/>
+					<rect id="R1048" class="cls-2" x="0.5" y="474.23" width="54.84" height="74.5"/>
+					<rect id="R1114" class="cls-2" x="114.32" y="437.05" width="65.19" height="50.7"/>
+					<rect id="R1122" class="cls-2" x="201.24" y="437.05" width="69.76" height="50.7"/>
+					<rect id="R1616" class="cls-2" x="287.12" y="172.09" width="57.94" height="64.15"/>
+					<rect id="R1632" class="cls-2" x="287.12" y="298.33" width="57.94" height="74.5"/>
+					<rect id="R1640" class="cls-2" x="287.12" y="372.83" width="57.94" height="73.47"/>
+					<rect id="R1644" class="cls-2" x="287.12" y="446.29" width="57.94" height="43.46"/>
+					<rect id="R1619" class="cls-2" x="367.83" y="172.09" width="53.81" height="64.15"/>
+					<rect id="R1623" class="cls-2" x="367.83" y="236.24" width="53.81" height="62.08"/>
+					<rect id="R1629" class="cls-2" x="367.83" y="298.33" width="53.81" height="41.39"/>
+					<rect id="R1637" class="cls-2" x="367.83" y="339.71" width="53.81" height="66.22"/>
+					<rect id="R1639" class="cls-2" x="367.83" y="405.94" width="53.81" height="40.35"/>
+					<rect id="R1645" class="cls-2" x="367.83" y="446.29" width="53.81" height="43.46"/>
+					<rect id="R1622" class="cls-2" x="316.09" y="236.24" width="28.97" height="20.69"/>
+					<rect id="R1624" class="cls-2" x="316.09" y="256.94" width="28.97" height="20.69"/>
+					<rect id="R1626" class="cls-2" x="316.09" y="277.63" width="28.97" height="20.69"/>
+					<rect id="R1425" class="cls-2" x="287.12" y="277.63" width="28.97" height="20.69"/>
+					<rect id="R1423" class="cls-2" x="287.12" y="256.94" width="28.97" height="20.69"/>
+					<rect id="R1421" class="cls-2" x="287.12" y="236.24" width="28.97" height="20.69"/>
+					<rect id="R2004" class="cls-2" x="700.51" y="12.74" width="56.91" height="82.78"/>
+					<rect id="R2016" class="cls-2" x="700.51" y="95.52" width="56.91" height="82.78"/>
+					<rect id="R2020" class="cls-2" x="700.51" y="178.3" width="56.91" height="73.47"/>
+					<rect id="R2026" class="cls-2" x="700.51" y="251.76" width="56.91" height="36.22"/>
+					<rect id="R2030" class="cls-2" x="700.51" y="287.98" width="56.91" height="107.61"/>
+					<rect id="R2044" class="cls-2" x="700.51" y="395.59" width="56.91" height="61.05"/>
+					<polygon id="R2252" class="cls-2" points="796.74 481.47 796.74 548.73 700.51 548.73 700.51 504.45 757.42 504.45 757.42 481.47 796.74 481.47"/>
+					<rect id="R2251" class="cls-2" x="810.19" y="481.47" width="19.66" height="67.26"/>
+					<rect id="R2117A" class="cls-2" x="829.85" y="481.47" width="24.32" height="34.15"/>
+					<rect id="R2117" class="cls-2" x="854.16" y="481.47" width="31.56" height="34.15"/>
+					<rect id="R2123A" class="cls-2" x="885.72" y="481.47" width="23.28" height="34.15"/>
+					<rect id="R2123" class="cls-2" x="909" y="481.47" width="15" height="34.15"/>
+					<rect id="R2127A" class="cls-2" x="924.01" y="481.47" width="34.15" height="34.15"/>
+					<rect id="R2129" class="cls-2" x="958.15" y="481.47" width="26.35" height="34.15"/>
+					<rect id="R2137" class="cls-2" x="985.06" y="507.34" width="80.71" height="76.57"/>
+					<rect id="R2870" class="cls-2" x="984.5" y="604.76" width="81.26" height="78.48"/>
+					<rect id="R2474" class="cls-2" x="958.15" y="655.59" width="26.35" height="45.24"/>
+					<rect id="R2472" class="cls-2" x="936.42" y="655.59" width="21.73" height="45.24"/>
+					<rect id="R2463" class="cls-2" x="936.42" y="618.34" width="48.08" height="37.24"/>
+					<rect id="R2457" class="cls-2" x="936.42" y="567.35" width="48.08" height="50.99"/>
+					<rect id="R2643" class="cls-2" x="1065.76" y="415.03" width="51.74" height="40.57"/>
+					<rect id="R2637" class="cls-2" x="1065.76" y="331.22" width="51.74" height="83.81"/>
+					<rect id="R2633" class="cls-2" x="1065.76" y="306.39" width="51.74" height="24.83"/>
+					<rect id="R2623" class="cls-2" x="1065.76" y="218.7" width="51.74" height="87.69"/>
+					<rect id="R2615" class="cls-2" x="1065.76" y="136.91" width="51.74" height="81.79"/>
+					<polygon id="R2613" class="cls-2" points="1117.5 110.01 1117.5 136.91 1065.76 136.91 1065.76 125.58 1087.77 125.58 1087.77 110.01 1117.5 110.01"/>
+					<polygon id="R2614" class="cls-2" points="1047.42 136.1 1047.42 177.81 992.3 177.81 992.3 152.74 1020.22 152.74 1020.22 136.1 1047.42 136.1"/>
+					<rect id="R2618" class="cls-2" x="992.3" y="177.81" width="55.12" height="79.13"/>
+					<rect id="R2628" class="cls-2" x="992.3" y="256.94" width="55.12" height="82.78"/>
+					<rect id="R2636" class="cls-2" x="992.3" y="339.71" width="55.12" height="75.32"/>
+					<rect id="R2642" class="cls-2" x="992.3" y="415.03" width="55.12" height="40.57"/>
+					<rect id="R2122" class="cls-2" x="901.53" y="404.94" width="90.77" height="50.7"/>
+					<rect id="R2033" class="cls-2" x="776.59" y="345.19" width="53.26" height="59.71"/>
+					<rect id="R2031" class="cls-2" x="776.59" y="325.23" width="53.26" height="19.96"/>
+					<rect id="R2029" class="cls-2" x="776.59" y="256.94" width="53.26" height="68.29"/>
+					<rect id="R2019" class="cls-2" x="776.59" y="177.81" width="53.26" height="79.13"/>
+					<rect id="R2011" class="cls-2" x="776.59" y="95.52" width="53.26" height="82.29"/>
+					<rect id="R2005A" class="cls-2" x="803.38" y="12.74" width="26.47" height="82.78"/>
+					<rect id="R2005" class="cls-2" x="776.59" y="36.34" width="26.79" height="59.18"/>
+					<rect class="cls-3" x="860.4" y="404.94" width="41.13" height="50.7"/>
+					<rect class="cls-4" x="803.22" y="404.94" width="57.18" height="50.7"/>
+					<rect class="cls-2" x="776.59" y="404.94" width="26.63" height="13.75"/>
+					<rect id="R2043" class="cls-2" x="776.59" y="418.69" width="26.63" height="11.6"/>
+					<rect id="R2133" class="cls-2" x="984.5" y="481.47" width="28" height="25.87"/>
+					<polygon id="R1109" class="cls-2" points="122.08 531.14 122.08 548.73 55.34 548.73 55.34 515.1 91.04 515.1 91.04 531.14 122.08 531.14"/>
+					<rect id="R1043" class="cls-2" x="79.14" y="437.05" width="35.18" height="25.35"/>
+					<rect id="R1047" class="cls-2" x="79.14" y="475.11" width="35.18" height="12.64"/>
+					<rect class="cls-5" x="91.04" y="515.1" width="16.04" height="16.04"/>
+					<rect id="R1111" class="cls-2" x="107.08" y="515.1" width="15" height="16.04"/>
+					<rect id="R1113" class="cls-2" x="122.08" y="515.1" width="15" height="33.63"/>
+					<rect class="cls-4" x="137.08" y="515.1" width="85.36" height="33.63"/>
+					<rect class="cls-3" x="222.45" y="515.1" width="53.35" height="33.63"/>
+					<rect id="R1648" class="cls-2" x="320.81" y="515.1" width="28.71" height="16.81"/>
+					<rect class="cls-1" x="320.03" y="515.1" width="0.78" height="11.68"/>
+					<rect id="R1131" class="cls-2" x="295.98" y="515.1" width="24.83" height="33.63"/>
+					<rect id="R1129" class="cls-2" x="275.8" y="515.1" width="20.18" height="33.63"/>
+					<rect id="R1118" class="cls-2" x="179.51" y="437.05" width="21.73" height="50.7"/>
+					<polygon id="R1413" class="cls-2" points="345.06 144.15 345.06 158.12 316.09 158.12 316.09 172.09 287.12 172.09 287.12 144.15 345.06 144.15"/>
+					<polygon id="R1615" class="cls-2" points="421.63 144.15 421.63 172.09 367.83 172.09 367.83 162.05 386.77 162.05 386.77 144.15 421.63 144.15"/>
+					<text class="cls-6" transform="translate(106.11 668.19)"><tspan class="cls-7">F</tspan><tspan class="cls-8" x="16.6" y="0">irst </tspan><tspan class="cls-9" x="70.6" y="0">F</tspan><tspan x="87.52" y="0">loor</tspan></text>
+					<text class="cls-6" transform="translate(685.08 668.19)"><tspan class="cls-10">S</tspan><tspan class="cls-11" x="17.96" y="0">e</tspan><tspan class="cls-12" x="36" y="0">c</tspan><tspan class="cls-13" x="51.91" y="0">ond </tspan><tspan class="cls-14" x="119.59" y="0">F</tspan><tspan x="136.51" y="0">loor</tspan></text>
+					<rect id="R2103" class="cls-2" x="700.51" y="481.47" width="28.45" height="22.98"/>
+					<rect id="R2105" class="cls-2" x="728.96" y="481.47" width="28.46" height="22.98"/>
+					<g>
+					  <rect class="cls-15" x="776.59" y="443.78" width="26.63" height="11.79"/>
+					  <line class="cls-16" x1="780.43" y1="443.78" x2="780.43" y2="455.57"/>
+					  <line class="cls-16" x1="784.03" y1="443.78" x2="784.03" y2="455.57"/>
+					  <line class="cls-16" x1="788.23" y1="443.78" x2="788.23" y2="455.57"/>
+					  <line class="cls-16" x1="792.12" y1="443.78" x2="792.12" y2="455.57"/>
+					  <line class="cls-16" x1="795.72" y1="443.78" x2="795.72" y2="455.57"/>
+					  <line class="cls-16" x1="799.32" y1="443.78" x2="799.32" y2="455.57"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="780.43" y="431.29" width="22.79" height="11.79"/>
+					  <line class="cls-16" x1="783.72" y1="431.29" x2="783.72" y2="443.07"/>
+					  <line class="cls-16" x1="786.8" y1="431.29" x2="786.8" y2="443.07"/>
+					  <line class="cls-16" x1="790.39" y1="431.29" x2="790.39" y2="443.07"/>
+					  <line class="cls-16" x1="793.72" y1="431.29" x2="793.72" y2="443.07"/>
+					  <line class="cls-16" x1="796.8" y1="431.29" x2="796.8" y2="443.07"/>
+					  <line class="cls-16" x1="799.88" y1="431.29" x2="799.88" y2="443.07"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="1148.29" y="131.7" width="26.63" height="11.79" transform="translate(2195.71 254.3) rotate(180)"/>
+					  <line class="cls-16" x1="1043.58" y1="122.6" x2="1043.58" y2="110.82"/>
+					  <line class="cls-16" x1="1039.98" y1="122.6" x2="1039.98" y2="110.82"/>
+					  <line class="cls-16" x1="1035.78" y1="122.6" x2="1035.78" y2="110.82"/>
+					  <line class="cls-16" x1="1031.88" y1="122.6" x2="1031.88" y2="110.82"/>
+					  <line class="cls-16" x1="1028.29" y1="122.6" x2="1028.29" y2="110.82"/>
+					  <line class="cls-16" x1="1024.69" y1="122.6" x2="1024.69" y2="110.82"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="1148.29" y="145.2" width="22.79" height="11.79" transform="translate(2191.87 281.29) rotate(180)"/>
+					  <line class="cls-16" x1="1040.29" y1="136.1" x2="1040.29" y2="124.31"/>
+					  <line class="cls-16" x1="1037.21" y1="136.1" x2="1037.21" y2="124.31"/>
+					  <line class="cls-16" x1="1033.62" y1="136.1" x2="1033.62" y2="124.31"/>
+					  <line class="cls-16" x1="1030.28" y1="136.1" x2="1030.28" y2="124.31"/>
+					  <line class="cls-16" x1="1027.2" y1="136.1" x2="1027.2" y2="124.31"/>
+					  <line class="cls-16" x1="1024.13" y1="136.1" x2="1024.13" y2="124.31"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="79.79" y="62.23" width="26.63" height="11.79"/>
+					  <line class="cls-16" x1="83.63" y1="62.23" x2="83.63" y2="74.02"/>
+					  <line class="cls-16" x1="87.23" y1="62.23" x2="87.23" y2="74.02"/>
+					  <line class="cls-16" x1="91.43" y1="62.23" x2="91.43" y2="74.02"/>
+					  <line class="cls-16" x1="95.33" y1="62.23" x2="95.33" y2="74.02"/>
+					  <line class="cls-16" x1="98.93" y1="62.23" x2="98.93" y2="74.02"/>
+					  <line class="cls-16" x1="102.52" y1="62.23" x2="102.52" y2="74.02"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="83.63" y="48.73" width="22.79" height="11.79"/>
+					  <line class="cls-16" x1="86.92" y1="48.73" x2="86.92" y2="60.52"/>
+					  <line class="cls-16" x1="90" y1="48.73" x2="90" y2="60.52"/>
+					  <line class="cls-16" x1="93.59" y1="48.73" x2="93.59" y2="60.52"/>
+					  <line class="cls-16" x1="96.93" y1="48.73" x2="96.93" y2="60.52"/>
+					  <line class="cls-16" x1="100.01" y1="48.73" x2="100.01" y2="60.52"/>
+					  <line class="cls-16" x1="103.09" y1="48.73" x2="103.09" y2="60.52"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="317.26" y="159.38" width="26.63" height="11.79"/>
+					  <line class="cls-16" x1="321.1" y1="159.38" x2="321.1" y2="171.17"/>
+					  <line class="cls-16" x1="324.7" y1="159.38" x2="324.7" y2="171.17"/>
+					  <line class="cls-16" x1="328.9" y1="159.38" x2="328.9" y2="171.17"/>
+					  <line class="cls-16" x1="332.8" y1="159.38" x2="332.8" y2="171.17"/>
+					  <line class="cls-16" x1="336.39" y1="159.38" x2="336.39" y2="171.17"/>
+					  <line class="cls-16" x1="339.99" y1="159.38" x2="339.99" y2="171.17"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="321.85" y="532.04" width="26.63" height="11.79"/>
+					  <line class="cls-16" x1="325.69" y1="532.04" x2="325.69" y2="543.83"/>
+					  <line class="cls-16" x1="329.29" y1="532.04" x2="329.29" y2="543.83"/>
+					  <line class="cls-16" x1="333.49" y1="532.04" x2="333.49" y2="543.83"/>
+					  <line class="cls-16" x1="337.38" y1="532.04" x2="337.38" y2="543.83"/>
+					  <line class="cls-16" x1="340.98" y1="532.04" x2="340.98" y2="543.83"/>
+					  <line class="cls-16" x1="344.58" y1="532.04" x2="344.58" y2="543.83"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="904.09" y="33.63" width="26.63" height="11.79" transform="translate(1707.31 58.15) rotate(180)"/>
+					  <line class="cls-16" x1="799.38" y1="24.53" x2="799.38" y2="12.74"/>
+					  <line class="cls-16" x1="795.78" y1="24.53" x2="795.78" y2="12.74"/>
+					  <line class="cls-16" x1="791.58" y1="24.53" x2="791.58" y2="12.74"/>
+					  <line class="cls-16" x1="787.68" y1="24.53" x2="787.68" y2="12.74"/>
+					  <line class="cls-16" x1="784.09" y1="24.53" x2="784.09" y2="12.74"/>
+					  <line class="cls-16" x1="780.49" y1="24.53" x2="780.49" y2="12.74"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="908.09" y="45.12" width="22.79" height="11.79" transform="translate(1711.47 81.15) rotate(180)"/>
+					  <line class="cls-16" x1="800.09" y1="36.02" x2="800.09" y2="24.24"/>
+					  <line class="cls-16" x1="797.01" y1="36.02" x2="797.01" y2="24.24"/>
+					  <line class="cls-16" x1="793.42" y1="36.02" x2="793.42" y2="24.24"/>
+					  <line class="cls-16" x1="790.08" y1="36.02" x2="790.08" y2="24.24"/>
+					  <line class="cls-16" x1="787" y1="36.02" x2="787" y2="24.24"/>
+					  <line class="cls-16" x1="783.93" y1="36.02" x2="783.93" y2="24.24"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="1035.5" y="584.91" width="20.99" height="8.94"/>
+					  <line class="cls-16" x1="1038.53" y1="584.91" x2="1038.53" y2="593.85"/>
+					  <line class="cls-16" x1="1041.36" y1="584.91" x2="1041.36" y2="593.85"/>
+					  <line class="cls-16" x1="1044.67" y1="584.91" x2="1044.67" y2="593.85"/>
+					  <line class="cls-16" x1="1047.75" y1="584.91" x2="1047.75" y2="593.85"/>
+					  <line class="cls-16" x1="1050.58" y1="584.91" x2="1050.58" y2="593.85"/>
+					  <line class="cls-16" x1="1053.42" y1="584.91" x2="1053.42" y2="593.85"/>
+					</g>
+					<rect class="cls-17" x="780.43" y="481.47" width="16.31" height="14.32"/>
+					<rect class="cls-17" x="1065.76" y="110.82" width="16.31" height="14.32"/>
+					<rect class="cls-17" x="367.76" y="145.58" width="16.31" height="14.32"/>
+					<text class="cls-18" transform="translate(11.5 80.12)">1006</text>
+					<text class="cls-18" transform="translate(11.5 160.12)">1008</text>
+					<text class="cls-18" transform="translate(11.5 281.23)">1020</text>
+					<rect id="R1033" class="cls-2" x="79.14" y="331.22" width="57.94" height="105.82"/>
+					<rect id="R1032" class="cls-2" x="0.5" y="331.22" width="54.84" height="107.82"/>
+					<text class="cls-18" transform="translate(11.5 389.62)">1032</text>
+					<text class="cls-18" transform="translate(93 281.23)">1019</text>
+					<text class="cls-18" transform="translate(93 389.62)">1033</text>
+					<text class="cls-18" transform="translate(93.59 160.12)">1009</text>
+					<text class="cls-18" transform="translate(11.5 462.4)">1042</text>
+					<text class="cls-18" transform="translate(11.5 517.12)">1048</text>
+					<text class="cls-18" transform="translate(80.14 454.12)">1043</text>
+					<text class="cls-18" transform="translate(129.58 468.02)">1114</text>
+					<text class="cls-18" transform="translate(222.45 468.02)">1122</text>
+					<text class="cls-18" transform="translate(172.26 537.93)">W</text>
+					<text class="cls-18" transform="translate(245 537.93)">M</text>
+					<text class="cls-18" transform="translate(71 544.83)">1109</text>
+					<text class="cls-18" transform="translate(299.5 207.12)">1616</text>
+					<text class="cls-18" transform="translate(299.5 343.62)">1632</text>
+					<text class="cls-18" transform="translate(301.6 414.21)">1640</text>
+					<text class="cls-18" transform="translate(301.6 474.23)">1644</text>
+					<text class="cls-18" transform="translate(380 474.23)">1645</text>
+					<text class="cls-18" transform="translate(380 379.62)">1637</text>
+					<text class="cls-18" transform="translate(380 323.12)">1629</text>
+					<text class="cls-18" transform="translate(380 432.62)">1639</text>
+					<text class="cls-18" transform="translate(380 271.32)">1623</text>
+					<text class="cls-18" transform="translate(380 207.12)">1619</text>
+					<text class="cls-18" transform="translate(388 165.27)">1615</text>
+					<text class="cls-18" transform="translate(713.5 58.12)">2004</text>
+					<text class="cls-18" transform="translate(713.5 142.08)">2016</text>
+					<text class="cls-18" transform="translate(713.5 221.12)">2020</text>
+					<text class="cls-18" transform="translate(713.5 275.12)">2026</text>
+					<text class="cls-18" transform="translate(713.5 348.12)">2030</text>
+					<text class="cls-18" transform="translate(713.5 431.29)">2044</text>
+					<text class="cls-18" transform="translate(732 529.28)">2252</text>
+					<text class="cls-18" transform="translate(789.9 142.08)">2011</text>
+					<text class="cls-18" transform="translate(788.23 222.11)">2019</text>
+					<text class="cls-18" transform="translate(788.23 298.33)">2029</text>
+					<text class="cls-18" transform="translate(788.59 340.71)">2031</text>
+					<text class="cls-18" transform="translate(788.23 377.37)">2033</text>
+					<text class="cls-18" transform="translate(826 435.83)">W</text>
+					<text class="cls-18" transform="translate(874.86 435.83)">M</text>
+					<text class="cls-18" transform="translate(929.5 435.32)">2122</text>
+					<text class="cls-18" transform="translate(1004.5 439.18)">2642</text>
+					<text class="cls-18" transform="translate(1004.5 382.14)">2636</text>
+					<text class="cls-18" transform="translate(1004.5 302.12)">2628</text>
+					<text class="cls-18" transform="translate(1004.5 218.7)">2618</text>
+					<text class="cls-18" transform="translate(1005.97 168.12)">2614</text>
+					<rect id="R2614A" class="cls-2" x="992.09" y="110.01" width="27.77" height="42.78"/>
+					<text class="cls-18" transform="translate(1076.5 183.62)">2615</text>
+					<text class="cls-18" transform="translate(1076.5 271.32)">2623</text>
+					<text class="cls-18" transform="translate(1076.5 325.23)">2633</text>
+					<text class="cls-18" transform="translate(1076.5 382.14)">2637</text>
+					<text class="cls-18" transform="translate(1076.5 439.87)">2643</text>
+					<text class="cls-18" transform="translate(1010.5 548.73)">2137</text>
+					<text class="cls-18" transform="translate(1010.5 649.1)">2870</text>
+					<text class="cls-18" transform="translate(943.5 598.12)">2457</text>
+					<text class="cls-18" transform="translate(943.91 640.62)">2463</text>
+					<text class="cls-19" transform="translate(937.42 683.24)">2472</text>
+					<text class="cls-19" transform="translate(962 683.24)">2474</text>
+					<text class="cls-19" transform="translate(994.5 133.62)">2614A</text>
+					<text class="cls-19" transform="translate(1094.5 125.13)">2613</text>
+					<text class="cls-19" transform="translate(293 158.12)">1413</text>
+					<text class="cls-19" transform="translate(293 249.62)">1421</text>
+					<text class="cls-19" transform="translate(293 271.32)">1423</text>
+					<text class="cls-19" transform="translate(293 291.12)">1425</text>
+					<text class="cls-19" transform="translate(321.85 249.62)">1622</text>
+					<text class="cls-19" transform="translate(321.1 269.87)">1624</text>
+					<text class="cls-19" transform="translate(321.85 291.12)">1626</text>
+					<text class="cls-19" transform="translate(88.71 485.12)">1047</text>
+					<g>
+					  <rect class="cls-15" x="79.69" y="462.93" width="26.63" height="11.79"/>
+					  <line class="cls-16" x1="83.53" y1="462.93" x2="83.53" y2="474.72"/>
+					  <line class="cls-16" x1="87.12" y1="462.93" x2="87.12" y2="474.72"/>
+					  <line class="cls-16" x1="91.32" y1="462.93" x2="91.32" y2="474.72"/>
+					  <line class="cls-16" x1="95.22" y1="462.93" x2="95.22" y2="474.72"/>
+					  <line class="cls-16" x1="98.82" y1="462.93" x2="98.82" y2="474.72"/>
+					  <line class="cls-16" x1="102.42" y1="462.93" x2="102.42" y2="474.72"/>
+					</g>
+					<text class="cls-19" transform="translate(180.77 468.83)">1118</text>
+					<text class="cls-19" transform="translate(133.88 541.71) rotate(-90)">1113</text>
+					<text class="cls-20" transform="translate(109.11 524.98)">1111</text>
+					<text class="cls-19" transform="translate(276.8 537.93)">1129</text>
+					<text class="cls-19" transform="translate(299.5 537.93)">1131</text>
+					<text class="cls-19" transform="translate(325.69 526.78)">1648</text>
+					<text class="cls-19" transform="translate(84.63 89.62)">1005</text>
+					<text class="cls-19" transform="translate(112.5 89.62)">1406</text>
+					<text class="cls-19" transform="translate(112.5 64.62)">1402</text>
+					<text class="cls-19" transform="translate(705.5 495.78)">2103</text>
+					<text class="cls-19" transform="translate(735 495.78)">2105</text>
+					<text class="cls-19" transform="translate(861.5 501.62)">2117</text>
+					<text class="cls-19" transform="translate(846.13 511.48) rotate(-90)">2117A</text>
+					<text class="cls-19" transform="translate(823.88 523.51) rotate(-90)">2251</text>
+					<text class="cls-19" transform="translate(899.63 511.48) rotate(-90)">2123A</text>
+					<text class="cls-19" transform="translate(919.61 507.34) rotate(-90)">2123</text>
+					<text class="cls-19" transform="translate(929.5 501.62)">2127A</text>
+					<g>
+					  <rect class="cls-15" x="1140.6" y="502.15" width="26.63" height="11.79" transform="translate(2180.32 995.2) rotate(180)"/>
+					  <line class="cls-16" x1="1035.88" y1="493.05" x2="1035.88" y2="481.26"/>
+					  <line class="cls-16" x1="1032.29" y1="493.05" x2="1032.29" y2="481.26"/>
+					  <line class="cls-16" x1="1028.09" y1="493.05" x2="1028.09" y2="481.26"/>
+					  <line class="cls-16" x1="1024.19" y1="493.05" x2="1024.19" y2="481.26"/>
+					  <line class="cls-16" x1="1020.59" y1="493.05" x2="1020.59" y2="481.26"/>
+					  <line class="cls-16" x1="1016.99" y1="493.05" x2="1016.99" y2="481.26"/>
+					</g>
+					<g>
+					  <rect class="cls-15" x="1140.6" y="514.64" width="22.79" height="11.79" transform="translate(2176.48 1020.19) rotate(180)"/>
+					  <line class="cls-16" x1="1032.6" y1="505.55" x2="1032.6" y2="493.76"/>
+					  <line class="cls-16" x1="1029.52" y1="505.55" x2="1029.52" y2="493.76"/>
+					  <line class="cls-16" x1="1025.92" y1="505.55" x2="1025.92" y2="493.76"/>
+					  <line class="cls-16" x1="1022.59" y1="505.55" x2="1022.59" y2="493.76"/>
+					  <line class="cls-16" x1="1019.51" y1="505.55" x2="1019.51" y2="493.76"/>
+					  <line class="cls-16" x1="1016.43" y1="505.55" x2="1016.43" y2="493.76"/>
+					</g>
+					<text class="cls-19" transform="translate(962 501.62)">2129</text>
+					<text class="cls-19" transform="translate(989 498.54)">2133</text>
+					<text class="cls-19" transform="translate(780.59 70.12)">2005</text>
+					<text class="cls-19" transform="translate(820.26 73.96) rotate(-90)">2005A</text>
+					<text class="cls-19" transform="translate(780.32 428.12)">2043</text>
+					<text class="cls-19" transform="translate(781.59 415.21)">FIRE</text>
+					<rect x="1064.76" y="671.78" width="4.07" height="10.46"/>
+					<rect x="1181.28" y="522.99" width="4.07" height="10.46" transform="translate(527.59 1690.65) rotate(-90)"/>
+					<rect x="1064.76" y="469" width="4.07" height="10.46"/>
+					<rect x="1182.06" y="125.66" width="4.07" height="10.46" transform="translate(925.7 1294.1) rotate(-90)"/>
+					<rect x="892.3" y="28.4" width="4.07" height="10.46" transform="translate(733.21 907.08) rotate(-90)"/>
+					<rect x="698.47" y="462.79" width="4.07" height="10.46"/>
+					<rect x="928.93" y="564.38" width="4.07" height="10.46" transform="translate(233.85 1479.69) rotate(-90)"/>
+					<rect x="481.88" y="159.81" width="4.07" height="10.46" transform="translate(191.38 628.07) rotate(-90)"/>
+					<rect x="194.95" y="63.58" width="4.07" height="10.46" transform="translate(0.68 244.91) rotate(-90)"/>
+					<rect x="404.52" y="452.7" width="4.07" height="10.46" transform="translate(-178.87 843.61) rotate(-90)"/>
+					<rect x="1064.76" y="589.1" width="4.07" height="10.46"/>
+					<text class="cls-6" transform="translate(462.1 30.13)">BUILDING 3</text>
+				  </svg>
+					  
+		</div>
+	</body>
+
+	 <!--========== Scripts ==========-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>    <!-- Bootstrap 3.3.7 -->
+	
+	<script>
+			var panZoomTiger = svgPanZoom('div>svg');
+			var zoomLevel = 2.0;
+			function zoomIn()
+			{
+				var x = document.getElementsByTagName('svg')[0];
+				zoomLevel += 0.5;
+				x.style.transform = "scaleX(" + zoomLevel + ") scaleY(" + zoomLevel + ")";
+			}
+			function zoomOut()
+			{
+				var x = document.getElementsByTagName('svg')[0];
+				zoomLevel -= 0.5;
+				if(zoomLevel == 0.0){zoomLevel = 0.5;}
+				x.style.transform = "scaleX(" + zoomLevel + ") scaleY(" + zoomLevel + ")";
+			}
+	
+			$(document).ready(function(){
+			//Hamburger menu icon
+			$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+				$(this).toggleClass('open');});
+			});
+		</script>
+
+	<script type="text/javascript">
+		function highlightRoom()
+		{
+			fillRoomsGold();
+			var room = window.location.search.substring(1);
+			if(/[a-z]/.test(room))
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();
+			if(room.length > 0){	
+				var x = document.getElementById(room);
+				x.style.fill = "green";
+			}
+		}
+
+		function highlightChosenRoom(room)
+		{
+			fillRoomsGold();
+			if(/[a-z]/.test(room))
+				room = room.slice(0,room.length-1) + room.charAt(room.length-1).toUpperCase();	
+			var x = document.getElementById(room);
+			x.style.fill = "green";
+		}
+
+		// Function to fill all rooms gold.
+		function fillRoomsGold() 
+		{
+			var polyObjs = document.getElementsByTagName('polygon');
+			for(var i = 0; i < polyObjs.length; i++)
+			{
+				if(polyObjs[i].id.match(/R[0-9]/i)){
+					polyObjs[i].style.fill = "gold";
+				}
+			}
+			var rectObjs = document.getElementsByTagName('rect');
+			for(var i = 0; i < rectObjs.length; i++)
+			{
+				if(rectObjs[i].id.match(/R[0-9]/i)){
+					rectObjs[i].style.fill = "gold";
+				}
+			}
+
+		}
+
+		// Function to validate search string.
+        // Regex: at least one digit (optionally 
+        // followed by a dash, followed by
+        // at least one digit (and optionally 
+        // followed by a letter)).
+        function validSearch(search)
+        {
+            var regex = /^[0-9]+([a-zA-Z])?(\-[0-9]+([a-zA-Z])?)?$/;
+            return regex.test(search);
+        }
+
+		// Highlights a valid building and sets
+        // its mousedown event to open to the 
+        // according floor if room is seached.
+        function searchFunction()
+        {
+            fillRoomsGold();
+
+            var search = document.searchForm.search.value;
+            search = search.replace(/ /g, "");
+            var room = 'R'+search;
+			
+			highlightChosenRoom(room);
+            
+        }
+
+        // Fired when enter is pressed in search box.
+        function whenEnter()
+        {
+            if(event.keyCode == 13)
+            {
+                searchFunction();
+            }
+        }
+	</script>
+</html>

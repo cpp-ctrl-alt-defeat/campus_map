@@ -105,7 +105,6 @@
 
     <!-- Script for search box. -->
     <script type="text/javascript">
-
         // Resets building attributes.
         function resetBldgAttr()
         {
@@ -121,12 +120,16 @@
                 buildings[i].mouseout(function(e){
                     this.node.style.opacity = 1;
                     this.node.setAttribute('fill', 'gold');
-                });
-                
-                buildings[i].mousedown(function(e){
-                    window.location = this.data('id')+'.html';
-                });
-            }
+                });    
+                // buildings[i].mousedown(function(e){
+                //     window.location = this.data('id')+'.html';
+                // });
+                        buildings[i].mousedown(function(e){
+                            if(this.data('id').match(/^B[3,8,9]$/i)){
+                                window.location = this.data('id')+'.html';
+                            }
+                        });
+                }
         }
 
         // Function to validate search string.
@@ -136,7 +139,7 @@
         // followed by a letter)).
         function validSearch(search)
         {
-            var regex = /^[0-9]+([a-zA-Z])?(\-[0-9]+([a-zA-Z])?)?$/;
+            var regex = /^[0-9]+([a-zA-Z])?([\- ][0-9]+([a-zA-Z])?)?$/;
             return regex.test(search);
         }
 
@@ -171,7 +174,7 @@
             resetBldgAttr();
 
             var search = document.searchForm.search.value;
-            search = search.replace(/ /g, "");
+            // search = search.replace(/ /g, "");
             var building;
             var room;
 
@@ -188,13 +191,26 @@
                     });
                     return;
                 }
+                else if(search.includes(' '))
+                {
+                    var parameters = search.split(' ');
+                    building = 'B'+parameters[0];
+                    room = 'R'+parameters[1];
+                    var i = highlightBuilding(building);
+                    buildings[i].mousedown(function(e){
+                        window.location = this.data('id')+'.html?'+room;
+                    });
+                    return;
+                }
                 else
                 {
                     building = 'B'+search;
                     var i = highlightBuilding(building);
-                    buildings[i].mousedown(function(e){
-                        window.location = this.data('id')+'.html';
-                    });
+                        buildings[i].mousedown(function(e){
+                            if(this.data('id').match(/^B[3,8,9]$/i)){
+                                window.location = this.data('id')+'.html';
+                            }
+                        });
                     return;
                 }
                 

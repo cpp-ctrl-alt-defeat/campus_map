@@ -8,7 +8,7 @@
         <meta name="description" content="cpp-ctrl-alt-defeat Website">
         <meta name="author" content="cpp-ctrl-alt-defeat">
         <meta name="theme-color" content="#ED1C24"/>
-		<title>Building 9 Floor 1</title>
+		<title>CPP Building 9</title>
             <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" /><!-- Favicon -->
             <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"><!-- Bootstrap 3.3.7 css being used --><!-- Bootstrap 4 not compatible with IE 9 -->
             <link rel="stylesheet" href="plugins/animate-css/animate.css"><!-- animate.css -->
@@ -23,46 +23,46 @@
 	</head>
 
 	<body>
-		<!-- Header Start -->
+        <!-- Header Start -->
         <header class="navigation">
-				<!-- Nav Start -->
-				<nav class="navbar navbar-fixed-top">
-					<div class="container">
-						<div class="navbar-header"><!-- Logo and hamburger button -->
-							<a class="navbar-brand">
-								<div class="logo" alt="Logo">
-								</div><!-- logo  -->
-							</a>
-							<!-- Hamburger btn, id links shapes, class links placement -->
-							<div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
-								<span></span><!-- Hamburger Line -->
-								<span></span><!-- Hamburger Line -->
-								<span></span><!-- Hamburger Line -->
-								<span></span><!-- Hamburger Line 2nd middle for X -->
-							</div>
-						</div><!-- navbar-header -->
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<!-- Search Box -->
-								<li>
-									<form class="search-box" name="searchForm" onsubmit="return false">
-										<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
-										<button class="search-btn" type="button" onclick="searchFunction()">
-											<i class="fa fa-search"></i>
-										</button>
-									</form>
-								</li>
-								<!-- Search Box End -->
-								<li><a href="http://www.broncomaps.com">Home</a></li>
-								<li><a href="https://github.com/cpp-ctrl-alt-defeat/campus_map">Github</a></li>
-								<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
-								<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
-							</ul>
-						</div><!-- /.navbar-collapse -->
-					</div><!-- /.container-fluid -->
-				  </nav>
-			</header><!-- header close -->
+			<!-- Nav Start -->
+			<nav class="navbar navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header"><!-- Logo and hamburger button -->
+						<a class="navbar-brand">
+							<div class="logo" alt="Logo">
+							</div><!-- logo  -->
+						</a>
+						<!-- Hamburger btn, id links shapes, class links placement -->
+						<div id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#iq-navbar-collapse-1">
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line -->
+							<span></span><!-- Hamburger Line 2nd middle for X -->
+						</div>
+					</div><!-- navbar-header -->
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="iq-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Search Box -->
+							<li>
+								<form class="search-box" name="searchForm" onsubmit="return false">
+									<input class="search-txt" type="text" onfocus="" placeholder="Search..." name="search" onkeydown="whenEnter()">
+									<button class="search-btn" type="button" onclick="searchFunction()">
+										<i class="fa fa-search"></i>
+									</button>
+								</form>
+							</li>
+							<!-- Search Box End -->
+							<li><a class="homeButton" href="http://www.broncomaps.com">Home</a></li>
+							<li><a class="githubButton" href="https://github.com/cpp-ctrl-alt-defeat/campus_map">Github</a></li>
+							<li><button class="zoomIn" onclick="zoomIn();">Zoom In+</button></li>
+							<li><button class="zoomOut" onclick="zoomOut();">Zoom Out-</button></li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			  </nav>
+        </header><!-- header close -->
 
 			<!-- SVG Zoom and Pan Library   -->
 				<?xml version="1.0" encoding="utf-8"?>
@@ -70,7 +70,7 @@
 				<div style="height: 100vh;">
 				<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 				<svg version="1.1" onload="highlightRoom()" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-					 width="1224" height="792" xml:space="preserve">
+					width="50vw" height="50vh" xml:space="preserve">
 				<rect id="R103" x="442.5" y="165.9" transform="matrix(2.755540e-03 -1 1 2.755540e-03 254.3024 712.9608)" class="st0" width="84.2" height="126.2"/>
 				<rect id="R104" x="422" y="187" class="st1" width="41.2" height="14.8"/>
 				<rect id="R105" x="421.6" y="101" class="st2" width="126.2" height="86.1"/>
@@ -5397,12 +5397,16 @@
 			var polyObjs = document.getElementsByTagName('polygon');
 			for(var i = 0; i < polyObjs.length; i++)
 			{
-				polyObjs[i].style.fill = "gold";
+				if(polyObjs[i].id.match(/R[0-9]/i)){
+					polyObjs[i].style.fill = "gold";
+				}
 			}
 			var rectObjs = document.getElementsByTagName('rect');
 			for(var i = 0; i < rectObjs.length; i++)
 			{
-				 rectObjs[i].style.fill = "gold";
+				if(rectObjs[i].id.match(/R[0-9]/i)){
+					rectObjs[i].style.fill = "gold";
+				}
 			}
 
 		}
