@@ -321,27 +321,70 @@ body {
 
    /* end of search box css */
 
+    .homeButton{
+        color: #CEB00D !important;
+        padding-top: 16px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-bottom: 5px !important;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        background: transparent;
+        border: transparent;
+    }
+
+    .homeButton:hover{
+        opacity: 0.7 !important;
+    }
+
+    .githubButton{
+        color: #CEB00D !important;
+        padding-top: 16px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-bottom: 5px !important;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        background: transparent;
+        border: transparent;
+    }
+
+    .githubButton:hover{
+        opacity: 0.7 !important;
+    }
+
 	.zoomIn {
-    color: #CEB00D;
-    padding: 10px 15px;
-    font-weight: 500;
-    font-size: 14px;
-    text-transform: uppercase;
-    background: transparent;
-    border: transparent;
+        color: #CEB00D;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        background: transparent;
+        border: transparent;
 	}
+
+    .zoomIn:hover {
+        opacity: 0.7;
+    }
+
 	.zoomOut {
-    color: #CEB00D;
-    padding: 10px 15px;
-    font-weight: 500;
-    font-size: 14px;
-    text-transform: uppercase;
-    background: transparent;
-    border: transparent;
+        color: #CEB00D;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        background: transparent;
+        border: transparent;
 	}
-	.zoomIn:hover {
-		opacity: 0.7;
-	}
+
 	.zoomOut:hover {
 		opacity: 0.7;
 	}
@@ -349,10 +392,11 @@ body {
    /* end of search box css */
 
   .navigation .navbar .navbar-nav {
-    padding-top: 25px;
+  /* Half of the vertical space minus half of the search bar height */
+    padding-top: 20px;
   }
-  
-  /* About Us Styling */
+
+/* About Us Styling */
   .navigation .navbar .navbar-nav > li > a {
     color: #CEB00D;
     padding: 10px 15px;
